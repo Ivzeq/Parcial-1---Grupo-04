@@ -1,7 +1,6 @@
 package list;
 
 import application.Exercise;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,20 +18,28 @@ public class ListExercise extends Exercise {
 
     @Override
     protected void exerciseLogic() {
-        System.out.println("Bienvenido " +
-                "\n su lista actual es: " + list.toString() +
-                "\n A- Agregar elemento a la lista" +
-                "\n B- remover elemento por índice" +
-                "\n C- Remover por referencia" +
-                "\n D- clear");
-        String userInput = scanner.nextLine().toUpperCase();
-        menuLogic(userInput);
+        switch (currentPhase){
+            case 0:
+                System.out.println(list.stream().toList());
+                System.out.println("Bienvenido " +
+                        "\n su lista actual es: " + list.toString() +
+                        "\n A- Agregar elemento a la lista" +
+                        "\n B- remover elemento por índice" +
+                        "\n C- Remover por referencia" +
+                        "\n D- clear");
+                break;
+            case 1:
 
+
+
+        }
+        menuLogic();
         scanner.close();
     }
 
 
-    private void menuLogic(String userInput){
+    private void menuLogic(){
+        String userInput = scanner.nextLine().toUpperCase();
         switch (userInput) {
             case "A":
                 addElement();
@@ -41,10 +48,10 @@ public class ListExercise extends Exercise {
                 removeElementByIndex();
                 break;
             case "C":
-                addElement();
+                removeElementByReference();
                 break;
             case "D":
-                removeElementByIndex();
+                clear();
                 break;
 
         }
