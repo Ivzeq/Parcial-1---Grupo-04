@@ -74,40 +74,88 @@ public class ListExercise extends Exercise {
         System.out.println("Cargue nuevo elemento");
         String newValue = scanner.nextLine().toUpperCase();
         list.add(newValue);
-        System.out.println(list);
-        System.out.println("Desea agregar otro elemento? y/otro valor");
-        String userInput = scanner.nextLine();
-        if(Objects.equals(userInput, "y")){
-            addElement();
-        } else {
-            currentPhase = 0;
-            menuLogic();
+        boolean runFunction = false;
+        while(!runFunction){
+            System.out.println(list);
+            System.out.println("Desea agregar otro elemento? y/otro valor");
+            String userInput = scanner.nextLine().toLowerCase();
+            if (userInput.equals("y")) {
+                System.out.println("Cargue el nuevo elemento");
+                newValue = scanner.nextLine().toUpperCase();
+                list.add(newValue);
+            } else {
+                runFunction = true;
+                currentPhase = 0;
+                menuLogic();
+            }
         }
     }
 
     private void removeElementByIndex() {
-        System.out.println("Su lista actual es: " + list);
-        System.out.println("Indique el índice de referencia");
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        System.out.println("Lista: " + list);
+        System.out.println("Ingrese el index del valor a borrar: ");
         int index = scanner.nextInt();
         list.remove(index);
-        System.out.println(list);
-        System.out.println("Desea eliminar otro elemento? y/otro valor");
-        String userInput = scanner.nextLine();
-        if(Objects.equals(userInput, "y")){
-            removeElementByIndex();
-        } else {
-            currentPhase = 0;
-            menuLogic();
+        boolean runFunction = false;
+        while(!runFunction){
+            System.out.println(list);
+            System.out.println("Desea borrar otro elemento? y/otro valor");
+            String userInput = scanner.nextLine().toLowerCase();
+            if (userInput.equals("y")) {
+                System.out.println("cargue el elemento a borrar:");
+                index = scanner.nextInt();
+                list.remove(index);
+            } else {
+                runFunction = true;
+                currentPhase = 0;
+                menuLogic();
+            }
+        }
+    }
+
+
+
+    private void removeElementByReference() {
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        System.out.println("Lista: " + list);
+        String newValue = scanner.nextLine().toUpperCase();
+        list.remove(newValue);
+        boolean runFunction = false;
+        while(!runFunction){
+            System.out.println(list);
+            System.out.println("Desea borrar otro elemento? y/otro valor");
+            String userInput = scanner.nextLine().toLowerCase();
+            if (userInput.equals("y")) {
+                System.out.println("cargue el elemento a boorar:");
+                newValue = scanner.nextLine().toUpperCase();
+                list.remove(newValue);
+            } else {
+                runFunction = true;
+                currentPhase = 0;
+                menuLogic();
+            }
         }
 
-    }
-    private void removeElementByReference() {
+
         System.out.println("Indique el elemento de referencia");
         String reference = scanner.nextLine().toUpperCase();
         list.remove(reference);
     }
     private void clear() {
-        list.clear();
+        System.out.println("Seguro? y/any");
+        String answer = scanner.nextLine().toUpperCase();
+        if (answer.equals("y")){
+            list.clear();
+        } else {
+            currentPhase = 0;
+            menuLogic();
+        }
+
     }
 
 
