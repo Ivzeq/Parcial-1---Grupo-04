@@ -2,6 +2,7 @@ package application;
 
 import list.ListExercise;
 import queueModule.QueueExercise;
+import setModule.SetExercise;
 import stackModule.StackExercise;
 
 import java.util.Scanner;
@@ -28,7 +29,8 @@ public class MainProgram {
                 "\n 1 - Test exercise" +
                 "\n 2 - Listas" +
                 "\n 3 - Queue" +
-                "\n 4 - Stack");
+                "\n 4 - Stack" +
+                "\n 5 - Set");
         String input = scanner.nextLine();
         switch (input) {
             case "0":
@@ -48,6 +50,10 @@ public class MainProgram {
                 break;
             case "4":
                 exercise = new StackExercise(scanner);
+                running = false;
+                break;
+            case "5":
+                exercise = new SetExercise(scanner);
                 running = false;
                 break;
         }
